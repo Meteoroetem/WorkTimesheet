@@ -2,6 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "openBrowser",
+            "command": "xdg-open",
+            "type": "shell",
+            "args": [
+                "https://localhost:8008/"
+            ]
+        },
+        {
             "label": "buildDesktopApp",
             "command": "dotnet",
             "type": "process",
@@ -17,6 +25,7 @@
             "label": "buildBrowserApp",
             "command": "dotnet",
             "type": "process",
+            "isBackground": false,
             "args": [
                 "build",
                 "${workspaceFolder}/${workspaceFolderBasename}.Browser/${workspaceFolderBasename}.Browser.csproj",
@@ -34,10 +43,46 @@
 				"--no-restore",
 				"-t:Run",
 				"${workspaceFolder}/${workspaceFolderBasename}.Android/${workspaceFolderBasename}.Android.csproj",
-                "-p:AndroidSdkDirectory=/home/rotem/Android/Sdk",
-                "-p:JavaSdkDirectory=/usr/lib64/jvm/java-17-openjdk-17"
+                "-p:AndroidSdkDirectory=${input:promptAndroidSdkDirectory}",
+                "-p:JavaSdkDirectory=${input:promptJavaSdkDirectory}"
 			],
 			"problemMatcher": "$msCompile"
 		}
+    ],
+    "inputs": [
+        {
+            "id": "promptAndroidSdkDirectory",
+            "type": "command",
+            "command": "extension.commandvariable.promptStringRemember",
+            "args":{
+                "key": "AndroidSdkDirectory",
+                "description": "Enter Android Sdk Directory Path"
+            }
+        },
+        {
+            "id": "rememberAndroidSdkDirectory",
+            "type": "command",
+            "command": "extension.commandvariable.remember",
+            "args":{
+                "key": "AndroidSdkDirectory"
+            }
+        },
+        {
+            "id": "promptJavaSdkDirectory",
+            "type": "command",
+            "command": "extension.commandvariable.promptStringRemember",
+            "args":{
+                "key": "JavaSdkDirectory",
+                "description": "Enter Java Sdk Directory Path"
+            }
+        },
+        {
+            "id": "rememberJavaSdkDirectory",
+            "type": "command",
+            "command": "extension.commandvariable.remember",
+            "args":{
+                "key": "JavaSdkDirectory"
+            }
+        }
     ]
 }
