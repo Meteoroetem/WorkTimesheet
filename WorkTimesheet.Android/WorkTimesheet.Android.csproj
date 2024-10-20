@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <Configuration>Debug</Configuration>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0-android</TargetFramework>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
@@ -9,6 +10,9 @@
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <AndroidAttachDebugger>true</AndroidAttachDebugger>
+    <AndroidSdbHostPort>10000</AndroidSdbHostPort>
+    <AcceptAndroidSDKLicenses>true</AcceptAndroidSDKLicenses>
   </PropertyGroup>
 
   <ItemGroup>

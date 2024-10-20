@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "buildDesktopApp",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/${workspaceFolderBasename}.Desktop/${workspaceFolderBasename}.Desktop.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildBrowserApp",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/${workspaceFolderBasename}.Browser/${workspaceFolderBasename}.Browser.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+			"label": "runDebugAndroidApp",
+			"command": "dotnet",
+			"type": "shell",
+			"args": [
+				"build",
+				"--no-restore",
+				"-t:Run",
+				"${workspaceFolder}/${workspaceFolderBasename}.Android/${workspaceFolderBasename}.Android.csproj",
+                "-p:AndroidSdkDirectory=/home/rotem/Android/Sdk",
+                "-p:JavaSdkDirectory=/usr/lib64/jvm/java-17-openjdk-17"
+			],
+			"problemMatcher": "$msCompile"
+		}
+    ]
+}
