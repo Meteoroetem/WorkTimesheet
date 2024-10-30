@@ -11,6 +11,10 @@
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidAttachDebugger>true</AndroidAttachDebugger>
+    <!--dontcommit-->
+    <AndroidSdkDirectory>/mnt/c/Users/rotem/Android/Sdk</AndroidSdkDirectory>
+    <!--dontcommit-->
+    <JavaSdkDirectory>/usr/lib64/jvm/java-17-openjdk-17</JavaSdkDirectory>
     <AndroidSdbHostPort>10000</AndroidSdbHostPort>
     <AcceptAndroidSDKLicenses>true</AcceptAndroidSDKLicenses>
   </PropertyGroup>
