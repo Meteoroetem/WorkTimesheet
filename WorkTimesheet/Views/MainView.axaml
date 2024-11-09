@@ -11,6 +11,20 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <StackPanel>
+    <DataGrid Margin="20" ItemsSource="{Binding WorkDays}"
+          IsReadOnly="True"
+          CanUserReorderColumns="True"
+          CanUserResizeColumns="True"
+          CanUserSortColumns="True"
+          GridLinesVisibility="All"
+          BorderThickness="1" BorderBrush="Gray">
+      <DataGrid.Columns>
+        <DataGridTextColumn Header="Date"  Binding="{Binding Date}"/>
+        <DataGridTextColumn Header="Clocked in"  Binding="{Binding EnterTime}"/>
+        <DataGridTextColumn Header="Clocked out" Binding="{Binding ExitTime}" />
+        <DataGridTextColumn Header="Total work hours this day" Binding="{Binding DayLength}" />
+      </DataGrid.Columns>
+    </DataGrid>
+  </StackPanel>
 </UserControl>
