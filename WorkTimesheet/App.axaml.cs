@@ -5,6 +5,7 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using WorkTimesheet.ViewModels;
 using WorkTimesheet.Views;
+using System.Globalization;
 
 namespace WorkTimesheet;
 
@@ -17,6 +18,12 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        CultureInfo.CurrentCulture = new("en-IL");
+        CultureInfo.CurrentUICulture = new("en-UK");
+        CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern = "HH:mm:ss.F";
+        CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern = "HH  :  mm:ss.F";
+        CultureInfo.CurrentCulture.DateTimeFormat.LongDatePattern = "dd MMM yyyy";
+        CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern = "dd MMM yyyy";
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Line below is needed to remove Avalonia data validation.

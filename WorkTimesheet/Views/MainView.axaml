@@ -26,10 +26,20 @@
         <DataGridTextColumn Header="Total work hours this day" Binding="{Binding DayLength}" />
       </DataGrid.Columns>
     </DataGrid>-->
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-      <Button Margin="20" FontSize="26">Clock in</Button>
-      <Button Margin="20" FontSize="26">Clock out</Button>
+
+    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+      <Button Margin="20" FontSize="26" Click="ClickHandler">Clock in</Button>
+        <StackPanel x:Name="timerPanel" VerticalAlignment="Center" IsVisible="false" HorizontalAlignment="Left">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Clocked in: "/> <TextBlock Text="{Binding EnterTime}"/>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Elapsed work time: "/> <TextBlock Text="{Binding TimeElapsed}"/>
+          </StackPanel>
+        </StackPanel>
     </StackPanel>
+
+    
     <ItemsControl ItemsSource="{Binding WorkDays}">
       <ItemsControl.ItemTemplate>
         <DataTemplate>

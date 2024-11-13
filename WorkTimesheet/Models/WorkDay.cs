@@ -8,12 +8,12 @@ namespace WorkTimesheet.Models
     public class WorkDay
     {
         public DateOnly Date {get; init;}
-        public TimeOnly EnterTime {get; init;}
-        public TimeOnly ExitTime {get; init;}
-        public double DayLength {
-            get => (ExitTime - EnterTime).TotalHours;
+        public TimeSpan EnterTime {get; init;}
+        public TimeSpan ExitTime {get; init;}
+        public TimeSpan DayLength {
+            get => ExitTime - EnterTime;
         }
-        public WorkDay(DateOnly date, TimeOnly enterTime, TimeOnly exitTime){
+        public WorkDay(DateOnly date, TimeSpan enterTime, TimeSpan exitTime){
             Date = date;
             EnterTime = enterTime;
             ExitTime = exitTime;
