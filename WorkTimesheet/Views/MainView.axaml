@@ -12,7 +12,7 @@
     <vm:MainViewModel />
   </Design.DataContext>
   <StackPanel>
-    <DataGrid Margin="20" ItemsSource="{Binding WorkDays}"
+    <!--<DataGrid Margin="20" ItemsSource="{Binding WorkDays}"
           IsReadOnly="True"
           CanUserReorderColumns="True"
           CanUserResizeColumns="True"
@@ -25,10 +25,35 @@
         <DataGridTextColumn Header="Clocked out" Binding="{Binding ExitTime}" />
         <DataGridTextColumn Header="Total work hours this day" Binding="{Binding DayLength}" />
       </DataGrid.Columns>
-    </DataGrid>
+    </DataGrid>-->
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-      <Button Margin="20" FontSize="20">Clock in</Button>
-      <Button Margin="20" FontSize="20">Clock out</Button>
+      <Button Margin="20" FontSize="26">Clock in</Button>
+      <Button Margin="20" FontSize="26">Clock out</Button>
     </StackPanel>
+    <ItemsControl ItemsSource="{Binding WorkDays}">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate>
+          <Expander VerticalAlignment="Top">
+            <Expander.Header>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="5 0" FontWeight="Bold" 
+                            Text="{Binding Date}"/>
+                <TextBlock Text="{Binding DayLength}"/>
+              </StackPanel>
+            </Expander.Header>
+            <StackPanel>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Enter time: "/>
+                <TextBlock Text="{Binding EnterTime}"/>
+              </StackPanel>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Exit Time: " />
+                <TextBlock Text="{Binding ExitTime}"/>
+              </StackPanel>
+            </StackPanel>
+        </Expander>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
   </StackPanel>
 </UserControl>

@@ -17,6 +17,7 @@ namespace WorkTimesheet.Models
             Date = date;
             EnterTime = enterTime;
             ExitTime = exitTime;
+            
         }
     }
 }
